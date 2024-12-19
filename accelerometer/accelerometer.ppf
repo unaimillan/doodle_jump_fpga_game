@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pinplan
+ variation_name="accelerometer_spi_0"
+ megafunction_name="ALTERA_UP_AVALON_ACCELEROMETER_SPI"
+ intended_family="MAX 10"
+ specifies="all_ports">
+ <global>
+  <pin name="clk" direction="input" scope="external" />
+  <pin name="reset" direction="input" scope="external" />
+  <pin name="address" direction="input" scope="external" />
+  <pin name="byteenable" direction="input" scope="external" />
+  <pin name="read" direction="input" scope="external" />
+  <pin name="write" direction="input" scope="external" />
+  <pin name="writedata[7..0]" direction="input" scope="external" />
+  <pin name="readdata[7..0]" direction="output" scope="external" />
+  <pin name="waitrequest" direction="output" scope="external" />
+  <pin name="irq" direction="output" scope="external" />
+  <pin name="I2C_SDAT" direction="bidir" scope="external" />
+  <pin name="I2C_SCLK" direction="output" scope="external" />
+  <pin name="G_SENSOR_CS_N" direction="output" scope="external" />
+  <pin name="G_SENSOR_INT" direction="input" scope="external" />
+ </global>
+</pinplan>

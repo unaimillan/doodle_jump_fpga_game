@@ -1,0 +1,93 @@
+module game1
+(input clk, up, input [11:0] cactuses0, cactuses1, cactuses2, cactuses3, input cactus_sync, output [8:0] jump_chn, output reg game_over);
+
+integer timeout = 0;
+integer i = 0;
+
+reg [8:0] jump_chn_reg = 0;
+reg jump = 0;
+reg jump_invulnerability = 0;
+integer jump_coefficient = 0;
+integer jump_length = 14;
+
+assign jump_chn = jump_chn_reg;
+
+integer j = 0;
+
+reg [11:0] cactuses [0:4];
+
+reg init = 0;
+reg start = 0;
+
+always @(posedge clk)
+begin
+	// -- INIT --
+	if (init == 0)
+	begin
+		init = 1;
+		game_over = 1;
+		jump = 0;
+	end
+	// --
+	
+	// -- STRAT GAME --
+	if (start == 0 & up == 1)
+	begin
+		start = 1;
+		game_over = 0;
+	end
+	//--
+	
+	// -- JUMP --
+	if (jump == 0 && up == 1)
+	begin
+		jump = 1;
+		timeout = 0;
+	end
+	
+	if (jump)
+	begin
+		timeout = timeout + 1;
+		
+		if(timeout >= 1562500)
+		begin
+			jump_coefficient = jump_coefficient + 1;
+			timeout = 0;
+		end
+			
+		jump_chn_reg = (jump_length * jump_length) - (jump_coefficient - jump_length) * (jump_coefficient - jump_length);
+		
+		if (jump_coefficient == jump_length * 2)
+		begin
+			jump = 0;
+			jump_coefficient = 0;
+		end
+	end
+	
+	if (jump_chn_reg >= 32)
+		jump_invulnerability = 1;
+	else
+		jump_invulnerability = 0;
+	// --
+	
+	// -- CACTUS COLLISION -- 
+	cactuses[0] = cactuses0;
+	cactuses[1] = cactuses1;
+	cactuses[2] = cactuses2;
+	cactuses[3] = cactuses3;
+	
+	if (jump_invulnerability == 0 && !cactus_sync)
+		for(i = 0; i < 4; i=i+1) begin
+			if (1024 + 200 - cactuses[i] >= 200 + 200)
+				if (1024 + 200 - cactuses[i] <= 300 + 200)
+				begin
+					game_over = 1;
+				end
+			
+			if (1024 + 200 - cactuses[i] + 50 >= 200 + 200)
+				if (1024 + 200 - cactuses[i] + 50 <= 300 + 200)
+					game_over = 1;
+		end
+	// --
+end
+endmodule
