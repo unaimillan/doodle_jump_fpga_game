@@ -1,9 +1,0 @@
-module game
-(input clk, output [8:0] jump_chn);
-reg [8:0] jump_chn_reg = 0;
-integer jump_height = 150;
-integer jump;
-assign jump_chn = jump_chn_reg;
-
-
-endmodule

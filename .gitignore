@@ -1,0 +1,10 @@
+# Quartus Databases
+db/
+incremental_db/
+output_files/
+
+# Backup files
+*.bak
+
+# Quartus Work Space files
+test.qws
