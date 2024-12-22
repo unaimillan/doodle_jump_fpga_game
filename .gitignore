@@ -1,0 +1,11 @@
+# Quartus Databases
+greybox_tmp/
+db/
+incremental_db/
+output_files/
+
+# Backup files
+*.bak
+
+# Quartus Work Space files
+test.qws
