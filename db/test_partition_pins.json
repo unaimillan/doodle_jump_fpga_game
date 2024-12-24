@@ -1,0 +1,37 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "h",
+					"strict" : false
+				},
+				{
+					"name" : "v",
+					"strict" : false
+				},
+				{
+					"name" : "red",
+					"strict" : false
+				},
+				{
+					"name" : "blue",
+					"strict" : false
+				},
+				{
+					"name" : "green",
+					"strict" : false
+				},
+				{
+					"name" : "right_button",
+					"strict" : false
+				},
+				{
+					"name" : "left_button",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

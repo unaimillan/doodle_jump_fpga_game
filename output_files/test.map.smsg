@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at spi_serdes.v(24): object "READ" differs only in case from object "read" in the same scope File: /home/user/intelFPGA_lite/test/hdl/spi_serdes.v Line: 24
